@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-09T13:17:32.903Z</updated>
+  <updated>2017-12-10T05:59:16.283Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,19 +17,25 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2017/12/09/hello-world/"/>
-    <id>http://yoursite.com/2017/12/09/hello-world/</id>
-    <published>2017-12-09T13:17:32.902Z</published>
-    <updated>2017-12-09T13:17:32.903Z</updated>
+    <title>MySQL基础</title>
+    <link href="http://yoursite.com/2017/12/10/MySQL%E5%9F%BA%E7%A1%80/"/>
+    <id>http://yoursite.com/2017/12/10/MySQL基础/</id>
+    <published>2017-12-10T05:57:21.000Z</published>
+    <updated>2017-12-10T05:59:16.283Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p>#MySQ#</p><p>##MySQL基础##</p><p>####基本操作####</p><pre><code>1、设置密码    set password = password();2、创建数据库    create database [if not exists] dbName;3、查看所有数据库    show database;4、删除数据库    drop database dbName;5、使用数据库    use database dbName;6、查看所有的表    show tables;7、删除数据表    drop table tabName;8、创建数据表    create table if not exists tabName(        字段名 字段类型 字段属性，        字段名 字段类型 字段属性，        字段名 字段类型 字段属性    ) engine = engName  default charset = utf8;9、增加数据    insert into tabName(字段名) values(v1),(v2)...   插入所有字段时，可以不写字段名10、更新    update tabName set 字段名 = 值 ； 全表修改    updata tabName set 字段名 = 值 where...11、删除    delete from tabName; 全部表    delete from tabName where ...12、查看    select * from tabName ; 全部    select k1,k2.. from tabName where .. group by.. order by .. limit..13、修改表名     alter table oldName rename newName;14、修改字段的数据类型    alter table tabName modify 字段名 新数据类型    alter table tabName modify 字段名 新数据类型 before/after 指定字段名15、修改字段名    alter table tabName change old new [新数据类型]16、增加字段    alter table tabName add 字段名 数据类型 [before/after 字段名]17、删除字段    alter table tabName drop 字段名18、更改表的引擎    alter table tabName  engine = NEW 19、修改数据库的字符集    alter database dbName character set NEW;20、更改数据表的字符集    alter table tabName convert to character set NEW;21、查看存储引擎    show create table tabName;</code></pre><p>####MySQL运算符####</p><pre><code>1. 算术运算符        +     -    *      /      DIV     %    MOD2. 比较运算符    数据列类型                       说明                                      取值范围    =                               a=b                                 若操作数a与操作数b相等，则为真    &lt;=&gt;                             a&lt;=&gt;b                               若a与b相等，则为真，可以用于NULL值比较    !=或&lt;&gt;                           a!=b或a&lt;&gt;b                           若操作数a与b不相等，为真    &lt;                               a&lt;b                                 若操作数a小于b，为真    &lt;=                              a&lt;=b                                若操作数a大于b，为真    &gt;                               a&gt;b                                 若操作数a大于b，为真    &gt;=                              a&gt;=b                                若操作数a大于等于b，为真    IS NULL                         a IS NULL                           若操作数a为NULL，为真    IS NOT NULL                     a IS NOT NULL                       若操作数a不为NULL，为真    BETWEEN                         a BETWEEN b AND c                   若a在b和c之间，为真    NOT BETWEEN                     a NOT BETWEEN b AND c               若操作数a不在b和c之间，为真    LIKE                            a LIKE b                            SQL模式匹配，若a匹配b，为真    NOT LIKE                        a NOT LIKE b                        SQL模式匹配，若a不匹配b，则为真    IN                              a IN (b1,b2….)                      若a等于b1,b2,b3,…中的某一个，则为真3. 逻辑运算符    操作符                         语法                                      描述    AND 或 &amp;&amp;                        a AND b 或 a &amp;&amp; b                    逻辑与，若两个操作数同时为真，则为真    OR 或 ||                     a OR b 或 a||b                       逻辑或，只要有一个操作数为真，则为真    XOR                             a XOR b                             逻辑异或，若有且仅有一个操作数为真，则为真            一真一假即为真, 同真同假即为假    NOT 或 ！                     NOT a 或 ！a                      逻辑非，若操作数为假，则为真</code></pre>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+        &lt;p&gt;#MySQ#&lt;/p&gt;
+&lt;p&gt;##MySQL基础##&lt;/p&gt;
+&lt;p&gt;####基本操作####&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1、设置密码
+    set password = password();
+2、创建数据库
+    create database [if not ex
       
     
     </summary>
