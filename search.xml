@@ -3,9 +3,13 @@
   
     
     <entry>
-      <title><![CDATA[MySQL基础]]></title>
-      <url>/2017/11/26/MySQL%E5%9F%BA%E7%A1%80/</url>
-      <content type="html"><![CDATA[<h2 id="MySQL基础"><a href="#MySQL基础" class="headerlink" title="MySQL基础"></a>MySQL基础</h2><h4 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h4><pre><code>1、设置密码
+      <title><![CDATA[MYSQL检查索引使用情况]]></title>
+      <url>/2017/11/30/MySQL%E5%9F%BA%E7%A1%80/</url>
+      <content type="html"><![CDATA[<p><strong> MYSQL检查索引使用情况：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>——–        检查索引使用情况<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+
+<h2 id="MySQL基础"><a href="#MySQL基础" class="headerlink" title="MySQL基础"></a>MySQL基础</h2><h4 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h4><pre><code>1、设置密码
     set password = password();
 2、创建数据库
     create database [if not exists] dbName;
@@ -83,8 +87,16 @@
             一真一假即为真, 同真同假即为假
 
     NOT 或 ！            NOT a 或 ！a                        逻辑非，若操作数为假，则为真
-</code></pre>]]></content>
+</code></pre></the>]]></content>
       
+        
+        <tags>
+            
+            <tag> 索引问题 </tag>
+            
+            <tag> MYSQL </tag>
+            
+        </tags>
         
     </entry>
     
