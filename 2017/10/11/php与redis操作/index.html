@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>php操作redis常用方法 | Hexo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="php操作redis常用方法： ——–        redis与php">
+<meta name="keywords" content="php,Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php操作redis常用方法">
+<meta property="og:url" content="http://yoursite.com/2017/10/11/php与redis操作/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="php操作redis常用方法： ——–        redis与php">
+<meta property="og:updated_time" content="2017-12-12T02:04:37.527Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="php操作redis常用方法">
+<meta name="twitter:description" content="php操作redis常用方法： ——–        redis与php">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">John Doe</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/MYSQL/" style="font-size: 10px;">MYSQL</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/Redis/" style="font-size: 15px;">Redis</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/主从配置/" style="font-size: 10px;">主从配置</a> <a href="/tags/基本操作/" style="font-size: 10px;">基本操作</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/字符类型/" style="font-size: 10px;">字符类型</a> <a href="/tags/常用操作/" style="font-size: 10px;">常用操作</a> <a href="/tags/恢复数据/" style="font-size: 10px;">恢复数据</a> <a href="/tags/授权/" style="font-size: 10px;">授权</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">John Doe</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">John Doe</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-php与redis操作" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/10/11/php与redis操作/" class="article-date">
+  	<time datetime="2017-10-11T02:01:48.000Z" itemprop="datePublished">2017-10-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      php操作redis常用方法
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong> php操作redis常用方法：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>——–        redis与php<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+
+
+
+<h1 id="php操作redis常用方法"><a href="#php操作redis常用方法" class="headerlink" title="php操作redis常用方法"></a>php操作redis常用方法</h1><h2 id="1、connect"><a href="#1、connect" class="headerlink" title="1、connect"></a>1、connect</h2><pre><code>$redis = new redis();  
+$result = $redis-&gt;connect(&apos;127.0.0.1&apos;, 6379);  
+$redis-&gt;auth(password);                    //如果没有配置密码，则不需这步
+</code></pre><h2 id="2、set"><a href="#2、set" class="headerlink" title="2、set"></a>2、set</h2><pre><code>$redis-&gt;set(&apos;test&apos;,&quot;11111111111&quot;);  
+</code></pre><h2 id="3、get"><a href="#3、get" class="headerlink" title="3、get"></a>3、get</h2><pre><code>$result = $redis-&gt;get(&apos;test&apos;);  
+</code></pre><h2 id="4、delete"><a href="#4、delete" class="headerlink" title="4、delete"></a>4、delete</h2><pre><code>描述：删除指定的键
+参数：一个键，或不确定数目的参数，每一个关键的数组：key1 key2 key3 … keyN
+$redis-&gt;delete(&apos;test&apos;);  
+</code></pre><h2 id="5、setnx"><a href="#5、setnx" class="headerlink" title="5、setnx"></a>5、setnx</h2><pre><code>描述：如果在数据库中不存在该键，设置关键值参数
+参数：key value
+$redis-&gt;set(&apos;test&apos;,&quot;1111111111111&quot;);  
+$redis-&gt;setnx(&apos;test&apos;,&quot;22222222&quot;);  
+echo $redis-&gt;get(&apos;test&apos;);  //结果：1111111111111  
+</code></pre><h2 id="6、exists"><a href="#6、exists" class="headerlink" title="6、exists"></a>6、exists</h2><pre><code>描述：验证指定的键是否存在
+参数key
+$redis-&gt;set(&apos;test&apos;,&quot;1111111111111&quot;);  
+var_dump($redis-&gt;exists(&apos;test&apos;));  //结果：bool(true)  
+</code></pre><h2 id="7-incr"><a href="#7-incr" class="headerlink" title="7 incr"></a>7 incr</h2><pre><code>描述：数字递增存储键值键.
+参数：key value：将被添加到键的值
+$redis-&gt;set(&apos;test&apos;,&quot;123&quot;);  
+var_dump($redis-&gt;incr(&quot;test&quot;));  //结果：int(124) 
+</code></pre><h2 id="8、decr"><a href="#8、decr" class="headerlink" title="8、decr"></a>8、decr</h2><pre><code>描述：数字递减存储键值。
+参数：key value：将被添加到键的值 
+$redis-&gt;set(&apos;test&apos;,&quot;123&quot;);  
+var_dump($redis-&gt;decr(&quot;test&quot;));  //结果：int(122)     
+</code></pre><h2 id="9、getMultiple"><a href="#9、getMultiple" class="headerlink" title="9、getMultiple"></a>9、getMultiple</h2><pre><code>描述：取得所有指定键的值。如果一个或多个键不存在，该数组中该键的值为假
+参数：其中包含键值的列表数组
+$result = $redis-&gt;getMultiple(array(&apos;test1&apos;,&apos;test2&apos;));
+</code></pre><h2 id="10、lpush"><a href="#10、lpush" class="headerlink" title="10、lpush"></a>10、lpush</h2><pre><code>描述：由列表头部添加字符串值。如果不存在该键则创建该列表。如果该键存在，而且不是一个列表，返回FALSE。
+参数：key,value
+var_dump($redis-&gt;lpush(&quot;test&quot;,&quot;111&quot;));   //结果：int(1)  
+</code></pre><h2 id="11，rpush"><a href="#11，rpush" class="headerlink" title="11，rpush"></a>11，rpush</h2><pre><code>描述：由列表尾部添加字符串值。如果不存在该键则创建该列表。如果该键存在，而且不是一个列表，返回FALSE。
+参数：key,value
+var_dump($redis-&gt;lpush(&quot;test&quot;,&quot;111&quot;));   //结果：int(1)  
+</code></pre><h2 id="12、lpop"><a href="#12、lpop" class="headerlink" title="12、lpop"></a>12、lpop</h2><pre><code>描述：返回和移除列表的第一个元素
+参数：key
+var_dump($redis-&gt;lpop(&quot;test&quot;));  //结果：string(3) &quot;222&quot;  
+</code></pre><h2 id="13，lsize-llen"><a href="#13，lsize-llen" class="headerlink" title="13，lsize,llen"></a>13，lsize,llen</h2><pre><code>描述：返回的列表的长度。如果列表不存在或为空，该命令返回0。如果该键不是列表，该命令返回FALSE。
+参数：Key
+$redis-&gt;lsize(&quot;test&quot;);
+</code></pre><h2 id="14、lget"><a href="#14、lget" class="headerlink" title="14、lget"></a>14、lget</h2><pre><code>描述：返回指定键存储在列表中指定的元素。 0第一个元素，1第二个… -1最后一个元素，-2的倒数第二…
+     错误的索引或键不指向列表则返回FALSE。
+参数：key index
+($redis-&gt;lget(&quot;test&quot;,3));
+</code></pre><h2 id="15、lset"><a href="#15、lset" class="headerlink" title="15、lset"></a>15、lset</h2><pre><code>描述：为列表指定的索引赋新的值,若不存在该索引返回false.
+参数：key index value
+var_dump($redis-&gt;lget(&quot;test&quot;,1));  //结果：string(3) &quot;111&quot;  
+var_dump($redis-&gt;lset(&quot;test&quot;,1,&quot;333&quot;));  //结果：bool(true)
+</code></pre><h2 id="16、lgetrange"><a href="#16、lgetrange" class="headerlink" title="16、lgetrange"></a>16、lgetrange</h2><pre><code>描述：返回在该区域中的指定键列表中开始到结束存储的指定元素，lGetRange(key, start, end)。
+     0第一个元素，1第二个元素… -1最后一个元素，-2的倒数第二…
+参数：key start end
+print_r($redis-&gt;lgetrange(&quot;test&quot;,0,-1));  //结果：Array ( [0] =&gt; 222 [1] =&gt; 111 )
+</code></pre><h2 id="17、lremove"><a href="#17、lremove" class="headerlink" title="17、lremove"></a>17、lremove</h2><pre><code>描述：从列表中从头部开始移除count个匹配的值。如果count为零，所有匹配的元素都被删除。
+     如果count是负数，内容从尾部开始删除。
+参数：key  value count
+($redis-&gt;lremove(&apos;test&apos;,&apos;a&apos;,2));
+</code></pre><h2 id="18、sadd"><a href="#18、sadd" class="headerlink" title="18、sadd"></a>18、sadd</h2><pre><code>描述：为一个Key添加一个值。如果这个值已经在这个Key中，则返回FALSE。
+参数：key value
+var_dump($redis-&gt;sadd(&apos;test&apos;,&apos;111&apos;));   //结果：bool(true)  
+</code></pre><h2 id="19、sremove"><a href="#19、sremove" class="headerlink" title="19、sremove"></a>19、sremove</h2><pre><code>描述：删除Key中指定的value值
+参数：key member
+redis-&gt;sremove(&apos;test&apos;,&apos;111&apos;);  
+</code></pre><h2 id="20、smove"><a href="#20、smove" class="headerlink" title="20、smove"></a>20、smove</h2><pre><code>描述：将Key1中的value移动到Key2中
+参数：srcKey dstKey member
+$redis-&gt;smove(&apos;test&apos;,&quot;test1&quot;,&apos;111&apos;);  
+</code></pre><h2 id="21，scontains"><a href="#21，scontains" class="headerlink" title="21，scontains"></a>21，scontains</h2><pre><code>描述：检查集合中是否存在指定的值。
+参数：key value
+($redis-&gt;scontains(&apos;test&apos;, &apos;111&apos;));
+</code></pre><h2 id="22、ssize"><a href="#22、ssize" class="headerlink" title="22、ssize"></a>22、ssize</h2><pre><code>描述：返回集合中存储值的数量
+参数：key
+echo $redis-&gt;ssize(&apos;test&apos;);  
+</code></pre><h2 id="23、spop"><a href="#23、spop" class="headerlink" title="23、spop"></a>23、spop</h2><pre><code>描述：随机移除并返回key中的一个值
+参数：key
+$redis-&gt;spop(&quot;test&quot;)
+</code></pre><h2 id="24、sinter"><a href="#24、sinter" class="headerlink" title="24、sinter"></a>24、sinter</h2><pre><code>描述：返回一个所有指定键的交集。如果只指定一个键，那么这个命令生成这个集合的成员。如果不存在某个键，则返回FALSE。
+参数：key1, key2, keyN
+$redis-&gt;sinter(&quot;test&quot;,&quot;test1&quot;)
+</code></pre><h2 id="25、sinterstore"><a href="#25、sinterstore" class="headerlink" title="25、sinterstore"></a>25、sinterstore</h2><pre><code>描述：执行sInter命令并把结果储存到新建的变量中。
+参数：
+Key: dstkey, the key to store the diff into.
+Keys: key1, key2… keyN. key1..keyN are intersected as in sInter.
+$redis-&gt;sinterstore(&apos;new&apos;,&quot;test&quot;,&quot;test1&quot;)
+</code></pre><h2 id="26、sunsion"><a href="#26、sunsion" class="headerlink" title="26、sunsion"></a>26、sunsion</h2><pre><code>描述：
+返回一个所有指定键的并集
+参数：
+Keys: key1, key2, … , keyN
+$redis-&gt;sunion(&quot;test&quot;,&quot;test1&quot;))
+</code></pre><h2 id="27-sunionstore"><a href="#27-sunionstore" class="headerlink" title="27,sunionstore"></a>27,sunionstore</h2><pre><code>描述：执行sunion命令并把结果储存到新建的变量中。
+参数：
+Key: dstkey, the key to store the diff into.
+Keys: key1, key2… keyN. key1..keyN are intersected as in sInter.
+</code></pre><h2 id="28、sdiff"><a href="#28、sdiff" class="headerlink" title="28、sdiff"></a>28、sdiff</h2><pre><code>描述：返回第一个集合中存在并在其他所有集合中不存在的结果
+参数：Keys: key1, key2, … , keyN: Any number of keys corresponding to sets in redis.
+$redis-&gt;sdiff(&quot;test&quot;,&quot;test1&quot;));  //结果：Array ( [0] =&gt; 222 [1] =&gt; 333 )  
+</code></pre><h2 id="29、sdiffstore"><a href="#29、sdiffstore" class="headerlink" title="29、sdiffstore"></a>29、sdiffstore</h2><pre><code>描述：执行sdiff命令并把结果储存到新建的变量中。
+参数：
+Key: dstkey, the key to store the diff into.
+Keys: key1, key2, … , keyN: Any number of keys corresponding to sets in redis
+($redis-&gt;smembers(&apos;new&apos;)
+</code></pre><h2 id="30、smembers-sgetmembers"><a href="#30、smembers-sgetmembers" class="headerlink" title="30、smembers, sgetmembers"></a>30、smembers, sgetmembers</h2><pre><code>描述：返回集合的内容
+参数：Key: key
+$redis-&gt;smembers(&apos;test&apos;));  //结果:Array ( [0] =&gt; 111 [1] =&gt; 222 ）
+</code></pre></the>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/10/11/redis简介/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Redis简介</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="php与redis操作" data-title="php操作redis常用方法" data-url="http://yoursite.com/2017/10/11/php与redis操作/"  data-images="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" data-content="php操作redis常用方法">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2017 John Doe
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>

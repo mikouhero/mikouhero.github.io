@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>MySQL基础 | Hexo</title>
+  <title>MySQL授权 | Hexo</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MySQL基础： ——–        基础操作">
-<meta name="keywords" content="基本操作,MYSQL">
+  <meta name="description" content="MySQL授权： ——–        授权">
+<meta name="keywords" content="MySQL,授权">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL基础">
-<meta property="og:url" content="http://yoursite.com/2017/11/30/MySQL基础/index.html">
+<meta property="og:title" content="MySQL授权">
+<meta property="og:url" content="http://yoursite.com/2017/10/10/MySQL授权/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="MySQL基础： ——–        基础操作">
-<meta property="og:updated_time" content="2017-12-12T01:35:07.256Z">
+<meta property="og:description" content="MySQL授权： ——–        授权">
+<meta property="og:updated_time" content="2017-12-12T01:56:24.537Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL基础">
-<meta name="twitter:description" content="MySQL基础： ——–        基础操作">
+<meta name="twitter:title" content="MySQL授权">
+<meta name="twitter:description" content="MySQL授权： ——–        授权">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -111,7 +111,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/MYSQL/" style="font-size: 10px;">MYSQL</a> <a href="/tags/基本操作/" style="font-size: 10px;">基本操作</a>
+						<a href="/tags/MYSQL/" style="font-size: 10px;">MYSQL</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/Redis/" style="font-size: 15px;">Redis</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/主从配置/" style="font-size: 10px;">主从配置</a> <a href="/tags/基本操作/" style="font-size: 10px;">基本操作</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/字符类型/" style="font-size: 10px;">字符类型</a> <a href="/tags/常用操作/" style="font-size: 10px;">常用操作</a> <a href="/tags/恢复数据/" style="font-size: 10px;">恢复数据</a> <a href="/tags/授权/" style="font-size: 10px;">授权</a>
 					</div>
 				</section>
 				
@@ -165,11 +165,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-MySQL基础" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-MySQL授权" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/11/30/MySQL基础/" class="article-date">
-  	<time datetime="2017-11-30T01:52:03.000Z" itemprop="datePublished">2017-11-30</time>
+      <a href="/2017/10/10/MySQL授权/" class="article-date">
+  	<time datetime="2017-10-10T06:49:11.000Z" itemprop="datePublished">2017-10-10</time>
 </a>
     </div>
   
@@ -182,7 +182,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      MySQL基础
+      MySQL授权
       
     </h1>
   
@@ -192,7 +192,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基本操作/">基本操作</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/授权/">授权</a></li></ul>
 	</div>
 
         
@@ -204,88 +204,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong> MySQL基础：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>——–        基础操作<br><a id="more"></a></excerpt></p>
+        <p><strong> MySQL授权：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>——–        授权<br><a id="more"></a></excerpt></p>
 <the rest="" of="" contents="" |="" 余下全文="">
 
 
-<h2 id="MySQL基础"><a href="#MySQL基础" class="headerlink" title="MySQL基础"></a>MySQL基础</h2><h4 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h4><pre><code>1、设置密码
-    set password = password();
-2、创建数据库
-    create database [if not exists] dbName;
-3、查看所有数据库
-    show database;
-4、删除数据库
-    drop database dbName;
-5、使用数据库
-    use database dbName;
-6、查看所有的表
-    show tables;
-7、删除数据表
-    drop table tabName;
-8、创建数据表
-    create table if not exists tabName(
-        字段名 字段类型 字段属性，
-        字段名 字段类型 字段属性，
-        字段名 字段类型 字段属性
-    ) engine = engName  default charset = utf8;
 
-9、增加数据
-    insert into tabName(字段名) values(v1),(v2)...   插入所有字段时，可以不写字段名
-10、更新
-    update tabName set 字段名 = 值 ； 全表修改
-    updata tabName set 字段名 = 值 where...
-11、删除
-    delete from tabName; 全部表
-    delete from tabName where ...
-12、查看
-    select * from tabName ; 全部
-    select k1,k2.. from tabName where .. group by.. order by .. limit..
-13、修改表名 
-    alter table oldName rename newName;
-14、修改字段的数据类型
-    alter table tabName modify 字段名 新数据类型
-    alter table tabName modify 字段名 新数据类型 before/after 指定字段名
-15、修改字段名
-    alter table tabName change old new [新数据类型]
-16、增加字段
-    alter table tabName add 字段名 数据类型 [before/after 字段名]
-17、删除字段
-    alter table tabName drop 字段名
-18、更改表的引擎
-    alter table tabName  engine = NEW 
-19、修改数据库的字符集
-    alter database dbName character set NEW;
-20、更改数据表的字符集
-    alter table tabName convert to character set NEW;
-21、查看存储引擎
-    show create table tabName;
-</code></pre><h4 id="MySQL运算符"><a href="#MySQL运算符" class="headerlink" title="MySQL运算符"></a>MySQL运算符</h4><pre><code>1. 算术运算符
-        +      -       *      /         DIV      %       MOD
-2. 比较运算符
-    数据列类型            说明                                        取值范围
-    =                    a=b                                    若操作数a与操作数b相等，则为真
-    &lt;=&gt;                    a&lt;=&gt;b                                若a与b相等，则为真，可以用于NULL值比较
-    !=或&lt;&gt;                a!=b或a&lt;&gt;b                            若操作数a与b不相等，为真
-    &lt;                    a&lt;b                                    若操作数a小于b，为真
-    &lt;=                    a&lt;=b                                若操作数a大于b，为真
-    &gt;                    a&gt;b                                    若操作数a大于b，为真
-    &gt;=                    a&gt;=b                                若操作数a大于等于b，为真
-    IS NULL                a IS NULL                            若操作数a为NULL，为真
-    IS NOT NULL            a IS NOT NULL                        若操作数a不为NULL，为真
-    BETWEEN                a BETWEEN b AND c                    若a在b和c之间，为真
-    NOT BETWEEN            a NOT BETWEEN b AND c                若操作数a不在b和c之间，为真
-    LIKE                a LIKE b                            SQL模式匹配，若a匹配b，为真
-    NOT LIKE            a NOT LIKE b                        SQL模式匹配，若a不匹配b，则为真
-    IN                    a IN (b1,b2….)                        若a等于b1,b2,b3,…中的某一个，则为真
-3. 逻辑运算符
-    操作符                语法                                        描述
-    AND 或 &amp;&amp;            a AND b 或 a &amp;&amp; b                    逻辑与，若两个操作数同时为真，则为真
-    OR 或 ||                a OR b 或 a||b                        逻辑或，只要有一个操作数为真，则为真
-
-    XOR                    a XOR b                                 逻辑异或，若有且仅有一个操作数为真，则为真
-            一真一假即为真, 同真同假即为假
-
-    NOT 或 ！            NOT a 或 ！a                        逻辑非，若操作数为假，则为真
+<h1 id="MySQL授权"><a href="#MySQL授权" class="headerlink" title="MySQL授权"></a>MySQL授权</h1><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><pre><code>两台linux lamp环境搭建完毕
+主服务器(master)      ip1
+从服务器(slave)        ip2
+</code></pre><blockquote>
+<p>主服务器master上的操作</p>
+</blockquote>
+<pre><code>mysql&gt;select user,host,password from mysql.user;
+</code></pre><p>root用户，只能在本机master登录，下面试验看能否从其它电脑</p>
+<blockquote>
+<p>从服务器（slave）上操作    </p>
+</blockquote>
+<pre><code>mysql -ujack -p -hip1;
+登录被拒绝，需要授权身份
+</code></pre><h3 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h3><blockquote>
+<p>主服务器master上的操作</p>
+</blockquote>
+<pre><code>mysql&gt; grant all on *.* to jack@ip2 identified by &quot;密码&quot;;
+</code></pre><blockquote>
+<p>从服务器（slave）上操作    </p>
+</blockquote>
+<pre><code>mysql -ujack -p -hip1;
+登录成功
+</code></pre><blockquote>
+<p>详细信息</p>
+</blockquote>
+<pre><code>all        权限，超级管理员(除了grant和revoke)
+*.*        范围某个数据库的某个表
+jack     用户名
+ip2        登录源地址，可用‘%’局部和全局匹配
 </code></pre></the>
       
     </div>
@@ -293,11 +245,30 @@
   </div>
   
     
+<nav id="article-nav">
+  
+    <a href="/2017/10/10/MySQL主从配置/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          MySQL主从配置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/10/MySQL日志恢复数据/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL日志恢复数据</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
-<div class="ds-share share" data-thread-key="MySQL基础" data-title="MySQL基础" data-url="http://yoursite.com/2017/11/30/MySQL基础/"  data-images="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" data-content="MySQL基础">
+<div class="ds-share share" data-thread-key="MySQL授权" data-title="MySQL授权" data-url="http://yoursite.com/2017/10/10/MySQL授权/"  data-images="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" data-content="MySQL授权">
     <div class="ds-share-inline">
       <ul  class="ds-share-icons-16">
       	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>

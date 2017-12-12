@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>MySQL主从配置 | Hexo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="MySQL主从配置： ——–        主从配置">
+<meta name="keywords" content="MySQL,主从配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL主从配置">
+<meta property="og:url" content="http://yoursite.com/2017/10/10/MySQL主从配置/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="MySQL主从配置： ——–        主从配置">
+<meta property="og:updated_time" content="2017-12-12T01:58:31.326Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL主从配置">
+<meta name="twitter:description" content="MySQL主从配置： ——–        主从配置">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">John Doe</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/MYSQL/" style="font-size: 10px;">MYSQL</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/Redis/" style="font-size: 15px;">Redis</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/主从配置/" style="font-size: 10px;">主从配置</a> <a href="/tags/基本操作/" style="font-size: 10px;">基本操作</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/字符类型/" style="font-size: 10px;">字符类型</a> <a href="/tags/常用操作/" style="font-size: 10px;">常用操作</a> <a href="/tags/恢复数据/" style="font-size: 10px;">恢复数据</a> <a href="/tags/授权/" style="font-size: 10px;">授权</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">John Doe</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">John Doe</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-MySQL主从配置" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/10/10/MySQL主从配置/" class="article-date">
+  	<time datetime="2017-10-10T07:31:42.000Z" itemprop="datePublished">2017-10-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MySQL主从配置
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/主从配置/">主从配置</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong> MySQL主从配置：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>——–        主从配置<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+
+<h1 id="MySQL主从配置"><a href="#MySQL主从配置" class="headerlink" title="MySQL主从配置"></a>MySQL主从配置</h1><blockquote>
+<p>mysql复制的优点</p>
+</blockquote>
+<pre><code>1、如果主服务器出现问题，可以快速切换到从服务器上提供服务
+2、可以在从服务器上执行查询操作，降低主服务器的访问压力
+3、可以在从服务器上执行备份，以避免备份期间影响主服务器的服务
+
+一般只有更新不频繁的数据或者对实时性要求不高的数据可以通过从服务器查询，实时性要求高的数据仍然需要在主服务器数据库获得
+</code></pre><blockquote>
+<p>注意：如果是LNMP环境需要关闭防火墙，MySQL5.6的虚拟机为克隆需要删除在库目录中的auto.cnf文件，否则无法主从复制。</p>
+</blockquote>
+<h3 id="主服务器配置"><a href="#主服务器配置" class="headerlink" title="主服务器配置"></a>主服务器配置</h3><pre><code>1.授权一个用户，在从服务器上可以通过这个用户来连接主服务器
+
+    mysql&gt; grant replication slave on *.* to repl@从服务器ip  indentified by &apos;密码&apos;;
+            select user,host,password from mysql.user;
+
+2、修改主数据库服务器的配置文件
+
+    vi /etc/my.cnf    
+    [mysql]    
+    log-bin=mysql-bin
+    server-id = 1
+    binlog-do-db =         #可以被记录binlog的库
+    binlog-ingnore-db =    #忽略记录binlog的库
+
+3、主服务器清空所有的bin-log日志
+
+    mysql&gt; reset master;
+           show master status;
+
+4、备份主数据库的数据
+    cd /usr/local/mysql/bin/
+    ./mysqldump -uroot -p test -l -F &gt;&apos;/tmp/test.sql&apos;;
+</code></pre><h3 id="从服务器配置"><a href="#从服务器配置" class="headerlink" title="从服务器配置"></a>从服务器配置</h3><pre><code>1、把主服务器上的备份文件，拷贝到从服务器上
+    scp root@主服务器ip:/tmp/test.sql  /tmp/test.sql
+
+2、把北峰文件，恢复到数据库
+    mysql -uroot -p test -f &lt; &apos;/tmp/test.sql&apos;
+
+3、清空所有bin-log
+    mysql&gt; reset master ; 主从服务器都清空
+
+4、修改配置文件
+    vi  /etc/my.cnf
+    [mysqld]
+    log-bin = mysql-bin         #已存在不需要修改
+    server-id = 2            #修改
+    replcate--do-db = test  #新增，要复制同步的数据库
+
+以下根据需要添加
+    log_slave_updates  = 1  # 将同步数据写入binlog日志
+    read_only  = 1            #限制用户写写入数据（普通用户、root等全部权限用户无法限制）
+    replicate-ignore-db = mysql  #新增，要忽略同步的数据库
+    replicate-do-table = #新增，要复制同步的数据表
+    replicate-ignore-table = #新增，要忽略同步的数据库
+
+注意 server-id 要唯一，如果前面已经开启或设置，不需要重复设置
+
+5、重启从数据库服务
+    pkill mysql;
+    /usr/local/mysql/bin/mysqld_safe --user=mysql &amp;;
+    或者 service mysql restart
+
+6、从服务器进入mysql命令行
+    ./mysql -uroot -p
+    stop slave;
+
+    change master to 
+    master_host = &apos;主服务器ip&apos;,
+    master_user = &apos;&apos;,
+    master_password = &apos;&apos;;
+
+查看是否成功
+show slave status \G
+
+Connect_Retry: 60                 如果失败，每60秒尝试一次
+
+Master_Log_File: mysql-bin.000002 主服务器的bin-log日志文件
+
+Read_Master_Log_Pos: 107          对应的位置
+
+Slave_IO_Running: Yes             从主服务器上读取binlog日志，并写入从服务器上的中继日志中
+
+Slave_SQL_Running: Yes            读取并且执行中继日志中的binlog日志
+#注：以上两个都为yes则表明成功，只要其中一个进程的状态是no，则表示复制进程停止，错误原因可以从&quot;last_error&quot;字段的值中看到.
+
+从服务器只建议做读操作，主服务器无法同步从服务器的写操作。
+完成！！！可测试查看同步情况
+
+show processlist \G
+
+如果主服务器在使用中，可以锁定数据库禁止写入，配置好后在解锁
+flush tables with read lock;
+unlock tables;
+</code></pre><h3 id="数据库常用命令"><a href="#数据库常用命令" class="headerlink" title="数据库常用命令"></a>数据库常用命令</h3><pre><code>1、    启动复制线程
+    start slave     
+
+2、    停止复制线程
+    stop slave
+
+3、查看从数据库状态
+    show slave status
+
+4、查看主数据库的bin-log 日志
+    show master logs;
+
+5、动态改变到主服务器的配置
+    change master to 
+
+6、查看从数据库运行进程
+    show processlist
+</code></pre><h1 id="双主"><a href="#双主" class="headerlink" title="双主"></a>双主</h1><h2 id="将复制事件写入binlog"><a href="#将复制事件写入binlog" class="headerlink" title="将复制事件写入binlog"></a>将复制事件写入binlog</h2><pre><code>log-slave-updates = trues #一台服务器既做主库又做从库此选项必须要开启
+</code></pre><h2 id="masterA自增长ID"><a href="#masterA自增长ID" class="headerlink" title="masterA自增长ID"></a>masterA自增长ID</h2><pre><code>auto_increment_offset = 1;
+auto_increment_increment = 2;    #奇数id
+</code></pre><h2 id="masterB自增长ID"><a href="#masterB自增长ID" class="headerlink" title="masterB自增长ID"></a>masterB自增长ID</h2><pre><code>auto_increment_offset = 2;
+auto_increment_increment = 2;    #偶数id
+</code></pre></the>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/10/11/redis简介/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          Redis简介
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/10/MySQL授权/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL授权</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="MySQL主从配置" data-title="MySQL主从配置" data-url="http://yoursite.com/2017/10/10/MySQL主从配置/"  data-images="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" data-content="MySQL主从配置">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2017 John Doe
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
