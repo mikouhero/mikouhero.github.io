@@ -3,9 +3,9 @@
   
     
     <entry>
-      <title><![CDATA[MYSQL检查索引使用情况]]></title>
+      <title><![CDATA[MySQL基础]]></title>
       <url>/2017/11/30/MySQL%E5%9F%BA%E7%A1%80/</url>
-      <content type="html"><![CDATA[<p><strong> MYSQL检查索引使用情况：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>——–        检查索引使用情况<br><a id="more"></a></excerpt></p>
+      <content type="html"><![CDATA[<p><strong> MySQL基础：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>——–        基础操作<br><a id="more"></a></excerpt></p>
 <the rest="" of="" contents="" |="" 余下全文="">
 
 
@@ -92,7 +92,7 @@
         
         <tags>
             
-            <tag> 索引问题 </tag>
+            <tag> 基本操作 </tag>
             
             <tag> MYSQL </tag>
             
