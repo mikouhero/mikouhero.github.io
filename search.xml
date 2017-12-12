@@ -297,9 +297,9 @@ auto_increment_increment = 2;    #偶数id
         
         <tags>
             
-            <tag> MySQL </tag>
-            
             <tag> 主从配置 </tag>
+            
+            <tag> MySQL </tag>
             
         </tags>
         
@@ -914,9 +914,9 @@ show index from table_name    //查
         
         <tags>
             
-            <tag> 字符类型 </tag>
-            
             <tag> MySQL </tag>
+            
+            <tag> 字符类型 </tag>
             
         </tags>
         

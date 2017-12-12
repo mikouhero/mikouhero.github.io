@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>Mikouhero</title>
   
   
   <link href="/atom.xml" rel="self"/>
@@ -10,7 +10,7 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Mikouhero</name>
     
   </author>
   
@@ -76,9 +76,9 @@
     </summary>
     
     
-      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
-    
       <category term="主从配置" scheme="http://yoursite.com/tags/%E4%B8%BB%E4%BB%8E%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
     
   </entry>
   
@@ -164,9 +164,9 @@
     </summary>
     
     
-      <category term="字符类型" scheme="http://yoursite.com/tags/%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B/"/>
-    
       <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+      <category term="字符类型" scheme="http://yoursite.com/tags/%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B/"/>
     
   </entry>
   
